@@ -13,6 +13,7 @@ use Sruuua\HTTPBasics\Request;
 use Sruuua\HTTPBasics\Response\Response;
 use Sruuua\Kernel\Event\KernelStart\KernelStartEvent;
 use Sruuua\Kernel\Event\Route\RouteFindEvent;
+use Sruuua\Kernel\Event\Route\RouteNotFoundEvent;
 use Symfony\Component\Dotenv\Dotenv;
 
 abstract class BaseKernel
@@ -52,6 +53,7 @@ abstract class BaseKernel
                 $page->getOptions()
             ));
         } else {
+            $this->getEventDispatcher()->dispatch(new RouteNotFoundEvent($request));
             $resp = new Response(404, 'Page was not found :(');
             $resp->response();
         }
