@@ -21,6 +21,6 @@ class KernelStartListener implements ListenerInterface
 
     public function __invoke(object $event)
     {
-        $this->logger->info("Kernel start at {date}\n", ['date' => $event->getDate()->format('H:i:s-m/d/Y')]);
+        $this->logger->info("Kernel start at {date}", ['date' => $event->getDate()->format('H:i:s-m/d/Y')]);
     }
 }
