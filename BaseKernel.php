@@ -12,6 +12,7 @@ use Sruuua\EventDispatcher\EventDispatcher;
 use Sruuua\HTTPBasics\Request;
 use Sruuua\HTTPBasics\Response\Response;
 use Sruuua\Kernel\Event\KernelStart\KernelStartEvent;
+use Sruuua\Kernel\Event\Route\RouteFindEvent;
 use Symfony\Component\Dotenv\Dotenv;
 
 abstract class BaseKernel
@@ -44,6 +45,7 @@ abstract class BaseKernel
         $page = $this->container->get('Sruuua\Routing\RouterBuilder')->getRouter()->getRoute($request->getRequestedPage());
 
         if (null !== $page) {
+            $this->getEventDispatcher()->dispatch(new RouteFindEvent($request, $page));
             $func = $page->getFunction()->getName();
             $page->getController()->$func(...array_map(
                 fn ($opt) => $this->container->get($opt->getName()),
