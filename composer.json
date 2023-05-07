@@ -4,10 +4,11 @@
     "type": "library",
     "require": {
         "sruuua/cache": "^1.2",
+        "sruuua/dependency-injection": "^3.0",
         "sruuua/error-handler": "^1.0",
         "sruuua/event-dispatcher": "^1.0",
         "sruuua/http-basics": "^1.0",
-        "sruuua/routing": "^1.2",
+        "sruuua/routing": "^2.1",
         "symfony/dotenv": "^6.2"
     },
     "autoload": {
