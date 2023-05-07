@@ -23,9 +23,9 @@ class RouteFindEventListener implements ListenerInterface
     {
         $this->logger->info("Route : {routeName} was find with {controller}::{function}({args})", [
             'routeName' => $event->getRequest()->getRequestedPage(),
-            'controller' => $event->getPage()->getController()::class,
-            'function' => $event->getPage()->getFunction(),
-            'args' => implode(",", $event->getPage()->getOptions())
+            'controller' => $event->getRoute()->getController()::class,
+            'function' => $event->getRoute()->getFunction()->getName(),
+            'args' => implode(",", $event->getRoute()->getOptions())
         ]);
     }
 }
