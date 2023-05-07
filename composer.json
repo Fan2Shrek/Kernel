@@ -1,0 +1,23 @@
+{
+    "name": "sruuua/kernel",
+    "description": "Kernel for sruuua framework",
+    "type": "library",
+    "require": {
+        "sruuua/cache": "^1.2",
+        "sruuua/error-handler": "^1.0",
+        "sruuua/http-basics": "^1.0",
+        "symfony/dotenv": "^6.2",
+        "sruuua/event-dispatcher": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sruuua\\Kernel\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Fan2Shrek",
+            "email": "pierre27.ambroise@gmail.com"
+        }
+    ]
+}
