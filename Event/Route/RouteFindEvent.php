@@ -14,7 +14,7 @@ class RouteFindEvent
     /**
      * @return Request
      */
-    public function getResquest(): Request
+    public function getRequest(): Request
     {
         return $this->request;
     }
