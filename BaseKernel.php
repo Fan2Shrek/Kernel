@@ -49,7 +49,7 @@ abstract class BaseKernel
             $this->getEventDispatcher()->dispatch(new RouteFindEvent($request, $page));
             $func = $page->getFunction()->getName();
             $page->getController()->$func(...array_map(
-                fn ($opt) => $this->container->get($opt->getName()),
+                fn ($opt) => $opt instanceof \ReflectionParameter ? $this->container->get($opt->getType()->getName()) : $opt,
                 $page->getOptions()
             ));
         } else {
