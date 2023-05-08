@@ -98,6 +98,9 @@ abstract class BaseKernel
 
         if ($cachePool->hasItem('container')) {
             $this->container = $cachePool->getItem('container')->get();
+
+            # if container cached was made by application
+            $this->container->set('App\Kernel', $this);
         } else {
             $this->container = (new ContainerBuilder($this, $this->classLoader))->getContainer();
             $cachePool->save(new Cache('container', $this->container));
