@@ -21,16 +21,16 @@ abstract class BaseKernel
     /**
      * @var Container
      */
-    private Container $container;
+    protected Container $container;
 
     /**
      * @var string[]
      */
-    private array $env = [];
+    protected array $env = [];
 
-    private ?EventDispatcher $eventDispatcher = null;
+    protected ?EventDispatcher $eventDispatcher = null;
 
-    private ClassLoader $classLoader;
+    protected ClassLoader $classLoader;
 
     public function __construct(ClassLoader $classLoader)
     {
