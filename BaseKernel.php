@@ -38,6 +38,7 @@ abstract class BaseKernel
 
         $this->classLoader = $classLoader;
         $this->InitializeContainer();
+        $this->env = $this->loadEnv();
         $this->getEventDispatcher()->dispatch(new KernelStartEvent(new \DateTime()));
     }
 
@@ -66,13 +67,6 @@ abstract class BaseKernel
      */
     public function getEnv(): array
     {
-        if (empty($this->env)) {
-            $dotenv = new Dotenv();
-            $dotenv->load('../.env');
-
-            $this->env = $_ENV;
-        }
-
         return $this->env;
     }
 
@@ -109,5 +103,13 @@ abstract class BaseKernel
         $this->container->set('cachePool', $cachePool);
 
         return $this->container;
+    }
+
+    public function loadEnv(): array
+    {
+        $dotenv = new Dotenv();
+        $dotenv->load('../.env');
+
+        return $this->env = $_ENV;
     }
 }
