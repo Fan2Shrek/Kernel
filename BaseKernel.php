@@ -46,6 +46,8 @@ abstract class BaseKernel
     {
         $page = $this->container->get('Sruuua\Routing\RouterBuilder')->getRouter()->getRoute($request->getRequestedPage());
 
+        $this->container->set('request', $request);
+
         if (null !== $page) {
             $this->getEventDispatcher()->dispatch(new RouteFindEvent($request, $page));
             $func = $page->getFunction()->getName();
